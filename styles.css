@@ -658,6 +658,8 @@ a {
 
   .clock-weekday {
     font-size: 21px;
+    position: relative;
+    top: -4px;
   }
 }
 
@@ -2866,6 +2868,7 @@ button.widget:active,
     font-size: 18px;
     line-height: 0.9;
     margin-top: 0;
+    top: -5px;
   }
 
   .about-photo-widget,
