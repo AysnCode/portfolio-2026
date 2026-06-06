@@ -551,18 +551,61 @@ document.querySelectorAll("[data-accordion-toggle]").forEach((toggle) => {
 });
 
 document.querySelectorAll("[data-contact-form]").forEach((form) => {
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const formData = new FormData(form);
-    const name = formData.get("name") || "";
-    const email = formData.get("email") || "";
-    const subject = formData.get("subject") || "Portfolio inquiry";
-    const message = formData.get("message") || "";
-    const body = [`Name: ${name}`, `Email: ${email}`, "", String(message)].join("\n");
+  const openedAt = Date.now();
 
-    window.location.href = `mailto:aaron.matthewyuson@gmail.com?subject=${encodeURIComponent(
-      String(subject)
-    )}&body=${encodeURIComponent(body)}`;
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (!form.reportValidity()) return;
+
+    const formData = new FormData(form);
+    const submitButton = form.querySelector(".contact-submit");
+    const status = form.querySelector("[data-contact-status]");
+    const payload = {
+      name: String(formData.get("name") || "").trim(),
+      email: String(formData.get("email") || "").trim(),
+      subject: String(formData.get("subject") || "").trim(),
+      message: String(formData.get("message") || "").trim(),
+      website: String(formData.get("website") || "").trim(),
+      elapsed: Date.now() - openedAt,
+    };
+
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.textContent = "Sending...";
+    }
+    if (status) {
+      status.className = "contact-form-status";
+      status.textContent = "Sending your message...";
+    }
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const result = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        throw new Error(result.error || "Your message could not be sent.");
+      }
+
+      form.reset();
+      if (status) {
+        status.className = "contact-form-status is-success";
+        status.textContent = "Message sent. Thank you for reaching out.";
+      }
+    } catch (error) {
+      if (status) {
+        status.className = "contact-form-status is-error";
+        status.textContent = error.message || "Something went wrong. Please try again.";
+      }
+    } finally {
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.textContent = "Send";
+      }
+    }
   });
 });
 

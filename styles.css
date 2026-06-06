@@ -1925,6 +1925,13 @@ button.widget:active,
   gap: 12px;
 }
 
+.contact-honeypot {
+  left: -10000px;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+}
+
 .contact-form label {
   display: grid;
   gap: 6px;
@@ -1967,6 +1974,28 @@ button.widget:active,
 
 .contact-submit:hover {
   background: var(--accent-red-dark);
+}
+
+.contact-submit:disabled {
+  cursor: wait;
+  opacity: 0.68;
+}
+
+.contact-form-status {
+  color: var(--text-muted-light);
+  font-size: 12px;
+  line-height: 1.4;
+  margin: 0;
+  min-height: 17px;
+  text-align: center;
+}
+
+.contact-form-status.is-success {
+  color: var(--input-text);
+}
+
+.contact-form-status.is-error {
+  color: var(--accent-red);
 }
 
 .snake-window {

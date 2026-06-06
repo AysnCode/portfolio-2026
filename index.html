@@ -1650,23 +1650,25 @@
               <span class="contact-linkedin-icon" aria-hidden="true"></span>
             </a>
             <form class="contact-form" data-contact-form>
+              <input class="contact-honeypot" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
               <label>
                 <span>Name</span>
-                <input name="name" type="text" autocomplete="name" required>
+                <input name="name" type="text" autocomplete="name" maxlength="80" required>
               </label>
               <label>
                 <span>Email</span>
-                <input name="email" type="email" autocomplete="email" required>
+                <input name="email" type="email" autocomplete="email" maxlength="160" required>
               </label>
               <label>
                 <span>Subject</span>
-                <input name="subject" type="text" required>
+                <input name="subject" type="text" maxlength="120" required>
               </label>
               <label>
                 <span>Message</span>
-                <textarea name="message" rows="5" required></textarea>
+                <textarea name="message" rows="5" maxlength="4000" required></textarea>
               </label>
               <button class="contact-submit" type="submit">Send</button>
+              <p class="contact-form-status" data-contact-status role="status" aria-live="polite"></p>
             </form>
           </div>
         </article>
