@@ -1214,9 +1214,15 @@ button.widget:active,
 }
 
 .window-dot {
+  appearance: none;
+  aspect-ratio: 1;
   border-radius: 50%;
   cursor: pointer;
+  flex: 0 0 12px;
   height: 12px;
+  min-height: 12px;
+  min-width: 12px;
+  padding: 0;
   width: 12px;
 }
 
@@ -2664,8 +2670,50 @@ button.widget:active,
   .dashboard-grid {
     grid-auto-rows: auto;
     gap: clamp(10px, 3.5vw, 16px);
+    grid-template-areas:
+      "home about"
+      "work work"
+      "brands contact"
+      "clock resume"
+      "snake models";
     grid-template-columns: repeat(2, minmax(0, 1fr));
     justify-content: center;
+  }
+
+  #home {
+    grid-area: home;
+  }
+
+  #about {
+    grid-area: about;
+  }
+
+  #work {
+    grid-area: work;
+  }
+
+  #brands {
+    grid-area: brands;
+  }
+
+  #contact {
+    grid-area: contact;
+  }
+
+  #clock {
+    grid-area: clock;
+  }
+
+  #resume {
+    grid-area: resume;
+  }
+
+  #snake {
+    grid-area: snake;
+  }
+
+  #models {
+    grid-area: models;
   }
 
   .thumbnail-widget {
@@ -2875,6 +2923,16 @@ button.widget:active,
 
 @media (max-width: 279px) {
   .dashboard-grid {
+    grid-template-areas:
+      "home"
+      "about"
+      "work"
+      "brands"
+      "contact"
+      "clock"
+      "resume"
+      "snake"
+      "models";
     grid-template-columns: minmax(0, 1fr);
   }
 
@@ -2924,7 +2982,10 @@ button.widget:active,
   }
 
   .window-dot {
+    flex-basis: 16px;
     height: 16px;
+    min-height: 16px;
+    min-width: 16px;
     width: 16px;
   }
 
