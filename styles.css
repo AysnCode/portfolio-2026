@@ -627,9 +627,11 @@ a {
 
 .clock-weekday {
   color: var(--widget-caption);
+  display: block;
   font-size: 25px;
   margin-top: 0;
-  text-align: center;
+  text-align: justify;
+  text-align-last: justify;
   width: 100%;
 }
 
