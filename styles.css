@@ -2864,7 +2864,8 @@ button.widget:active,
 
   .clock-weekday {
     font-size: 18px;
-    margin-top: 5px;
+    line-height: 0.9;
+    margin-top: 0;
   }
 
   .about-photo-widget,
