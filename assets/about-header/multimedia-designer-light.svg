@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 142.15 22.14">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3 {
+        isolation: isolate;
+      }
+
+      .cls-2, .cls-3 {
+        fill: #fff;
+        font-family: BebasNeue-Regular, 'Bebas Neue';
+        font-size: 21.09px;
+      }
+
+      .cls-3 {
+        letter-spacing: -.08em;
+      }
+    </style>
+  </defs>
+  <g id="Layer_2-2" data-name="Layer 2">
+    <g id="Layer_1-2" data-name="Layer 1-2">
+      <g class="cls-1">
+        <text class="cls-2" transform="translate(0 17.93)"><tspan x="0" y="0">MU</tspan></text>
+        <text class="cls-3" transform="translate(19.82 17.93)"><tspan x="0" y="0">L</tspan></text>
+        <text class="cls-2" transform="translate(25.43 17.93)"><tspan x="0" y="0">TIMEDIA D</tspan></text>
+        <text class="cls-2" transform="translate(89.16 17.93)"><tspan x="0" y="0">E</tspan></text>
+        <text class="cls-2" transform="translate(96.85 17.93)"><tspan x="0" y="0">SIGNER</tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>

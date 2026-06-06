@@ -1,0 +1,16 @@
+{
+  "name": "Aaron Yuson | Multimedia Designer",
+  "short_name": "Aaron Yuson",
+  "description": "Portfolio of multimedia designer Aaron Yuson.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#e7e8e8",
+  "theme_color": "#d41217",
+  "icons": [
+    {
+      "src": "assets/AY-Logo-2026.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
