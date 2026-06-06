@@ -651,7 +651,12 @@ a {
   }
 
   .clock-time-stack {
+    align-content: stretch;
+    align-self: center;
     font-size: 27px;
+    grid-template-rows: repeat(4, minmax(0, 1fr));
+    height: 84px;
+    line-height: 1;
   }
 
   .clock-period {
@@ -659,9 +664,9 @@ a {
   }
 
   .clock-weekday {
+    align-self: center;
     font-size: 21px;
-    position: relative;
-    top: -4px;
+    position: static;
   }
 }
 
@@ -2860,6 +2865,7 @@ button.widget:active,
 
   .clock-time-stack {
     font-size: 23px;
+    height: 70px;
   }
 
   .clock-period {
@@ -2870,7 +2876,6 @@ button.widget:active,
     font-size: 18px;
     line-height: 0.9;
     margin-top: 0;
-    top: -5px;
   }
 
   .about-photo-widget,
