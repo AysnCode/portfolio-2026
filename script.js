@@ -579,15 +579,35 @@ document.querySelectorAll("[data-contact-form]").forEach((form) => {
     }
 
     try {
-      const response = await fetch("/api/contact", {
+      const response = await fetch("https://formsubmit.co/ajax/aaron.matthewyuson@gmail.com", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name: payload.name,
+          email: payload.email,
+          subject: payload.subject,
+          message: payload.message,
+          _subject: `[Portfolio] ${payload.subject}`,
+          _replyto: payload.email,
+          _template: "table",
+          _captcha: "false",
+        }),
       });
       const result = await response.json().catch(() => ({}));
 
+      if (result.success === "false" && /needs activation/i.test(result.message || "")) {
+        throw new Error("The contact form is awaiting owner activation.");
+      }
+
       if (!response.ok) {
         throw new Error(result.error || "Your message could not be sent.");
+      }
+
+      if (result.success === "false") {
+        throw new Error(result.message || "Your message could not be sent.");
       }
 
       form.reset();
