@@ -38,6 +38,8 @@ module.exports = async function contactHandler(request, response) {
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
+          Origin: "https://aaronyuson.com",
+          Referer: "https://aaronyuson.com/",
         },
         body: JSON.stringify({
           name,
@@ -53,6 +55,10 @@ module.exports = async function contactHandler(request, response) {
     );
 
     const result = await formSubmitResponse.json().catch(() => ({}));
+    if (result.success === "false" && /needs activation/i.test(result.message || "")) {
+      return response.status(503).json({ error: "The contact form is awaiting owner activation." });
+    }
+
     if (!formSubmitResponse.ok || result.success === "false") {
       console.error("FormSubmit error", result);
       return response.status(502).json({ error: "Email delivery failed. Please try again shortly." });
